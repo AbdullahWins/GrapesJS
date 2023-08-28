@@ -1,11 +1,11 @@
 // import DragAndDrop from "./components/DragAndDrop";
-import ThisIsABox from "./components/ThisIsABox";
+import GrapesJsEditor from "./components/GrapesJsEditor";
 
 function App() {
 
   return (
     <div>
-      <ThisIsABox></ThisIsABox>
+      <GrapesJsEditor></GrapesJsEditor>
       {/* <DragAndDrop></DragAndDrop> */}
     </div>
   );
