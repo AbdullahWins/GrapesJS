@@ -8,26 +8,13 @@ const GrapesJsEditor = () => {
   const [editor, setEditor] = useState(null);
   const [jsxCode, setJsxCode] = useState('');
 
-  const handleSave = () => {
-    if (editor) {
-      const canvasHTML = editor.getHtml(); // Get the canvas content as HTML
-
-      // Convert HTML to JSX
-      const jsxCode = htmlToJsx(canvasHTML);
-      setJsxCode(jsxCode);
-
-      // Trigger the download
-      downloadJsxFile(jsxCode);
-    }
-  };
-
-  // Convert HTML to JSX
+  //convert
   const htmlToJsx = (html) => {
     const jsx = html.replace(/class=/g, 'className='); // Convert class to className
     return `<div>${jsx}</div>`;
   };
 
-  // Trigger download of JSX file
+  //download
   const downloadJsxFile = (content) => {
     const element = document.createElement('a');
     const file = new Blob([content], { type: 'text/javascript' });
@@ -37,6 +24,16 @@ const GrapesJsEditor = () => {
     element.click();
     document.body.removeChild(element);
   };
+//clickhandler
+  const handleSave = () => {
+    if (editor) {
+      const canvasHTML = editor.getHtml();
+      const jsxCode = htmlToJsx(canvasHTML);
+      setJsxCode(jsxCode);
+      downloadJsxFile(jsxCode);
+    }
+  };
+
 
   useEffect(() => {
     const newEditor = grapesjs.init({
