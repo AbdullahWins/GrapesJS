@@ -1,10 +1,10 @@
 import GrapesJsEditor from "./pages/GrapesJsEditor";
-import ToDo from "./pages/ToDo";
+// import ToDo from "./pages/ToDo";
 
 function App() {
   return (
     <div>
-      <ToDo></ToDo>
+      {/* <ToDo></ToDo> */}
       <GrapesJsEditor></GrapesJsEditor>
     </div>
   );

@@ -2,6 +2,7 @@ import { useRef, useEffect, useState } from "react";
 import grapesjs from "grapesjs";
 import Card from "../elements/Card";
 import ReactDOMServer from "react-dom/server";
+import ImageViewer from "../elements/ImageViewer";
 
 const GrapesJsEditor = () => {
   const editorRef = useRef(null);
@@ -41,10 +42,19 @@ const GrapesJsEditor = () => {
 
     setEditor(newEditor);
 
+    //card
     const CardReactToHTML = ReactDOMServer.renderToString(<Card />);
     newEditor.BlockManager.add("custom-element", {
       label: "Card",
       content: CardReactToHTML,
+    });
+    //imageviwer
+    const ImageViewerReactToHTML = ReactDOMServer.renderToString(
+      <ImageViewer></ImageViewer>
+    );
+    newEditor.BlockManager.add("image-viewer", {
+      label: "Image Viewer",
+      content: ImageViewerReactToHTML,
     });
 
     return () => {
