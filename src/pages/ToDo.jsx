@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import TodoItem from "../components/ToDoList";
+import TodoItem from "../components/TodoItem";
 
 const ToDo = () => {
   const [todos, setTodos] = useState([
     { id: "todo-1", content: "Buy groceries" },
     { id: "todo-2", content: "Walk the dog" },
     { id: "todo-3", content: "Finish coding project" },
+    { id: "todo-4", content: "Review code" },
+    { id: "todo-5", content: "open pull request" },
   ]);
 
   const addTodo = () => {
@@ -53,8 +55,8 @@ const ToDo = () => {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <div className="flex justify-center mx-auto mt-8">
-        <div className="flex flex-wrap -mx-4">
+      <div className="flex justify-center items-center mx-auto p-16">
+        <div className="flex justify-center items-center flex-wrap -mx-4 gap-6">
           {todos.map((todo, index) => (
             <TodoItem
               key={todo.id}
@@ -66,9 +68,9 @@ const ToDo = () => {
               deleteTodo={deleteTodo}
             />
           ))}
-          <div className="w-1/3 p-4 border rounded-md bg-gray-200 shadow-md cursor-pointer mb-4">
+          <div className="border rounded-md bg-gray-200 shadow-md cursor-pointer mb-4">
             <button
-              className="text-gray-600 hover:text-gray-800"
+              className="w-72 h-72 p-4 text-gray-600 hover:text-gray-800"
               onClick={addTodo}
             >
               + Add Todo
