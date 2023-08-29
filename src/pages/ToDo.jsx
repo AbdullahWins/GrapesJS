@@ -69,12 +69,14 @@ const ToDo = () => {
               moveTodo={moveTodo}
               editTodo={editTodo}
               deleteTodo={deleteTodo}
+              onTouchStart={(e) => e.preventDefault()} // Prevent default touch behavior
             />
           ))}
           <div className="border rounded-md bg-gray-200 shadow-md cursor-pointer mb-4">
             <button
               className="w-72 h-72 p-4 text-gray-600 hover:text-gray-800"
               onClick={addTodo}
+              onTouchStart={addTodo} // Add onTouchStart for touch devices
             >
               + Add Todo
             </button>
