@@ -26,10 +26,10 @@ const TodoItem = ({ id, content, index, moveTodo, editTodo, deleteTodo }) => {
     <div
       ref={(node) => drop(drag(node))}
       style={{ opacity }}
-      className="w-1/3 p-4 border rounded-md bg-white shadow-md cursor-pointer mb-4"
+      className="w-72 h-72 p-4 border rounded-md bg-gray-100 shadow-md cursor-pointer"
     >
-      <div className="flex justify-between items-center mb-2">
-        <span className="text-lg font-bold">{content}</span>
+      <div className="h-full flex flex-col justify-between items-center gap-6 bg-white rounded-lg">
+        <p className="text-lg font-bold">{content}</p>
         <div className="flex space-x-4">
           <button
             className="text-blue-500 hover:text-blue-700"

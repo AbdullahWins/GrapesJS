@@ -63,7 +63,7 @@ const GrapesJsEditor = () => {
   }, []);
 
   return (
-    <div className="bg-gray-100 p-12 shadow-md flex flex-col items-center">
+    <div className="bg-gray-100 shadow-md flex flex-col items-center">
       <div
         ref={editorRef}
         className="border border-gray-300 p-4 mb-4 rounded-lg"
