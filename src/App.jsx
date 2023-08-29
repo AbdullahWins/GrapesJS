@@ -1,12 +1,12 @@
-// import DragAndDrop from "./components/DragAndDrop";
-import GrapesJsEditor from "./components/GrapesJsEditor";
+// import GrapesJsEditor from "./components/GrapesJsEditor";
+import TodoList from "./components/ToDoList";
+
 
 function App() {
-
   return (
     <div>
-      <GrapesJsEditor></GrapesJsEditor>
-      {/* <DragAndDrop></DragAndDrop> */}
+      <TodoList></TodoList>
+      {/* <GrapesJsEditor></GrapesJsEditor> */}
     </div>
   );
 }
