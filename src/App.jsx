@@ -4,7 +4,9 @@ import GrapesJsEditor from "./pages/GrapesJsEditor";
 function App() {
   return (
     <div className=" bg-gray-200 w-full min-h-screen">
-      <GrapesJsEditor></GrapesJsEditor>
+      <div className="">
+        <GrapesJsEditor></GrapesJsEditor>
+      </div>
       <div className="flex items-center justify-center gap-4">
         {/* <ToDo></ToDo> */}
       </div>
