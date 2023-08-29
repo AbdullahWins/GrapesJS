@@ -4,13 +4,12 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import TodoItem from "../components/TodoItem";
 
 const ToDo = () => {
-  const [todos, setTodos] = useState([
-    { id: "todo-1", content: "Buy groceries" },
-    { id: "todo-2", content: "Walk the dog" },
-    { id: "todo-3", content: "Finish coding project" },
-    { id: "todo-4", content: "Review code" },
-    { id: "todo-5", content: "open pull request" },
-  ]);
+  const [todos, setTodos] = useState(() => {
+    const savedTodos = localStorage.getItem("todos");
+    return savedTodos
+      ? JSON.parse(savedTodos)
+      : [{ id: "todo-1", content: "Add One ToDo" }];
+  });
 
   const addTodo = () => {
     const newTodo = prompt("Enter a new todo:");
@@ -20,6 +19,7 @@ const ToDo = () => {
         { id: `todo-${todos.length + 1}`, content: newTodo },
       ];
       setTodos(newTodos);
+      localStorage.setItem("todos", JSON.stringify(newTodos));
     }
   };
 
@@ -33,6 +33,7 @@ const ToDo = () => {
         todo.id === id ? { ...todo, content: updatedContent } : todo
       );
       setTodos(newTodos);
+      localStorage.setItem("todos", JSON.stringify(newTodos));
     }
   };
 
@@ -43,6 +44,7 @@ const ToDo = () => {
     if (confirmation) {
       const newTodos = todos.filter((todo) => todo.id !== id);
       setTodos(newTodos);
+      localStorage.setItem("todos", JSON.stringify(newTodos));
     }
   };
 
@@ -51,6 +53,7 @@ const ToDo = () => {
     const [movedTodo] = newTodos.splice(fromIndex, 1);
     newTodos.splice(toIndex, 0, movedTodo);
     setTodos(newTodos);
+    localStorage.setItem("todos", JSON.stringify(newTodos));
   };
 
   return (
