@@ -1,12 +1,11 @@
-// import GrapesJsEditor from "./components/GrapesJsEditor";
-import TodoList from "./components/ToDoList";
-
+import GrapesJsEditor from "./pages/GrapesJsEditor";
+import ToDo from "./pages/ToDo";
 
 function App() {
   return (
     <div>
-      <TodoList></TodoList>
-      {/* <GrapesJsEditor></GrapesJsEditor> */}
+      <ToDo></ToDo>
+      <GrapesJsEditor></GrapesJsEditor>
     </div>
   );
 }
