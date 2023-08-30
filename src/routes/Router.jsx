@@ -30,7 +30,7 @@ export const routes = createBrowserRouter([
         path: "/grapes/:id",
         element: <ShowGrapes></ShowGrapes>,
         loader: ({ params }) =>
-          fetch(`${import.meta.env.API_BASE_URL}/items/${params.id}`),
+          fetch(`${import.meta.env.VITE_API_BASE_URL}/items/${params.id}`),
       },
     ],
   },

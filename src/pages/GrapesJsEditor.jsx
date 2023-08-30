@@ -23,11 +23,11 @@ const GrapesJsEditor = () => {
       const convertedJsxCode = htmlToJsx(canvasHTML);  
       try {
         // Make an Axios POST request
-        const response = await axios.post(`${import.meta.env.API_BASE_URL}/items`, {
+        const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/items`, {
           jsxCode: convertedJsxCode
         });
-        setNewUrl(`${import.meta.env.SITE_BASE_URL}/${response?.data}`)
-        console.log('Response from server:', newUrl);
+        setNewUrl(`${import.meta.env.VITE_SITE_BASE_URL}/grapes/${response?.data}`)
+        console.log('Response from server:', response?.data);
       } catch (error) {
         console.error('Error saving JSX:', error);
       }
