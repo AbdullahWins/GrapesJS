@@ -3,6 +3,7 @@ import GrapesJsEditor from "../pages/GrapesJsEditor";
 import ToDo from "../pages/ToDo";
 import Home from "../pages/Home";
 import MainLayout from "../layouts/MainLayout";
+import ShowGrapes from "../pages/ShowGrapes";
 
 export const routes = createBrowserRouter([
   {
@@ -24,6 +25,12 @@ export const routes = createBrowserRouter([
       {
         path: "/grapes",
         element: <GrapesJsEditor></GrapesJsEditor>,
+      },
+      {
+        path: "/grapes/:id",
+        element: <ShowGrapes></ShowGrapes>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/items/${params.id}`),
       },
     ],
   },

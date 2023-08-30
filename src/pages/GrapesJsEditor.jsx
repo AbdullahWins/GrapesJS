@@ -3,11 +3,12 @@ import grapesjs from "grapesjs";
 import Card from "../elements/Card";
 import ReactDOMServer from "react-dom/server";
 import ImageViewer from "../elements/ImageViewer";
+import axios from "axios";
 
 const GrapesJsEditor = () => {
   const editorRef = useRef(null);
   const [editor, setEditor] = useState(null);
-  const [jsxCode, setJsxCode] = useState("");
+  const [newUrl, setNewUrl] = useState("");
 
   //convert
   const htmlToJsx = (html) => {
@@ -15,25 +16,24 @@ const GrapesJsEditor = () => {
     return `<div>${jsx}</div>`;
   };
 
-  //download
-  const downloadJsxFile = (content) => {
-    const element = document.createElement("a");
-    const file = new Blob([content], { type: "text/javascript" });
-    element.href = URL.createObjectURL(file);
-    element.download = "component.jsx";
-    document.body.appendChild(element);
-    element.click();
-    document.body.removeChild(element);
-  };
   //clickhandler
-  const handleSave = () => {
+  const handleSave = async () => {
     if (editor) {
       const canvasHTML = editor.getHtml();
-      const convertedJsxCode = htmlToJsx(canvasHTML);
-      setJsxCode(convertedJsxCode);
-      downloadJsxFile(jsxCode);
+      const convertedJsxCode = htmlToJsx(canvasHTML);  
+      try {
+        // Make an Axios POST request
+        const response = await axios.post('http://localhost:5000/items', {
+          jsxCode: convertedJsxCode
+        });
+        setNewUrl(`https://thegrape.netlify.app/${response?.data}`)
+        console.log('Response from server:', newUrl);
+      } catch (error) {
+        console.error('Error saving JSX:', error);
+      }
     }
   };
+  
 
   useEffect(() => {
     const newEditor = grapesjs.init({
@@ -74,10 +74,10 @@ const GrapesJsEditor = () => {
       >
         Generate and Download Component
       </button>
-      {jsxCode && (
+      {newUrl && (
         <div className="mt-4 text-center">
-          <h3 className="text-lg font-semibold mb-2">Generated JSX:</h3>
-          <pre className="bg-gray-200 p-4 rounded-lg">{jsxCode}</pre>
+          <h3 className="text-lg font-semibold mb-2">Generated JSX URL:</h3>
+          <pre className="bg-gray-200 p-4 rounded-lg">{newUrl}</pre>
         </div>
       )}
     </div>
