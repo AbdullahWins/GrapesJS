@@ -30,7 +30,7 @@ export const routes = createBrowserRouter([
         path: "/grapes/:id",
         element: <ShowGrapes></ShowGrapes>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/items/${params.id}`),
+          fetch(`${import.meta.env.API_BASE_URL}/items/${params.id}`),
       },
     ],
   },

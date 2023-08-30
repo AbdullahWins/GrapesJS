@@ -23,10 +23,10 @@ const GrapesJsEditor = () => {
       const convertedJsxCode = htmlToJsx(canvasHTML);  
       try {
         // Make an Axios POST request
-        const response = await axios.post('http://localhost:5000/items', {
+        const response = await axios.post(`${import.meta.env.API_BASE_URL}/items`, {
           jsxCode: convertedJsxCode
         });
-        setNewUrl(`https://thegrape.netlify.app/${response?.data}`)
+        setNewUrl(`${import.meta.env.SITE_BASE_URL}/${response?.data}`)
         console.log('Response from server:', newUrl);
       } catch (error) {
         console.error('Error saving JSX:', error);
