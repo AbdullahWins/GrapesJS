@@ -74,12 +74,15 @@ const GrapesJsEditor = () => {
       >
         Generate and Download Component
       </button>
-      {newUrl && (
+      {newUrl ? (
         <div className="mt-4 text-center">
           <h3 className="text-lg font-semibold mb-2">Generated JSX URL:</h3>
           <pre className="bg-gray-200 p-4 rounded-lg">{newUrl}</pre>
         </div>
-      )}
+      ) : ( <div className="mt-4 text-center">
+                <h3 className="text-lg font-semibold mb-2">Generated Url Will show here!</h3>
+          </div>)
+    }
     </div>
   );
 };
