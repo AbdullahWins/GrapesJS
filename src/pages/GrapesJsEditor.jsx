@@ -29,8 +29,8 @@ const GrapesJsEditor = () => {
   const handleSave = () => {
     if (editor) {
       const canvasHTML = editor.getHtml();
-      const jsxCode = htmlToJsx(canvasHTML);
-      setJsxCode(jsxCode);
+      const convertedJsxCode = htmlToJsx(canvasHTML);
+      setJsxCode(convertedJsxCode);
       downloadJsxFile(jsxCode);
     }
   };

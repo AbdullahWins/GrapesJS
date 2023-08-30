@@ -1,15 +1,12 @@
-import GrapesJsEditor from "./pages/GrapesJsEditor";
-// import ToDo from "./pages/ToDo";
+import { RouterProvider } from "react-router-dom";
+import { routes } from "./routes/Router";
 
 function App() {
+  const Router = routes;
+
   return (
-    <div className=" bg-gray-200 w-full min-h-screen">
-      <div className="">
-        <GrapesJsEditor></GrapesJsEditor>
-      </div>
-      <div className="flex items-center justify-center gap-4">
-        {/* <ToDo></ToDo> */}
-      </div>
+    <div>
+      <RouterProvider router={Router}></RouterProvider>
     </div>
   );
 }
