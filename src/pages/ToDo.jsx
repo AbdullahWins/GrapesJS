@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { DndProvider } from "react-dnd";
-// import { HTML5Backend } from "react-dnd-html5-backend";
+import { HTML5Backend } from "react-dnd-html5-backend";
 import { TouchBackend } from "react-dnd-touch-backend";
 
 import TodoItem from "../components/TodoItem";
@@ -60,7 +60,7 @@ const ToDo = () => {
 
   return (
       <DndProvider backend={TouchBackend}>
-{/*     <DndProvider backend={HTML5Backend}> */}
+    <DndProvider backend={HTML5Backend}>
         <div className="flex justify-center items-center mx-auto p-16">
           <div className="flex justify-center items-center flex-wrap -mx-4 gap-6">
             {todos.map((todo, index) => (
@@ -86,7 +86,7 @@ const ToDo = () => {
             </div>
           </div>
         </div>
-{/*     </DndProvider> */}
+    </DndProvider>
       </DndProvider>
   );
 };
