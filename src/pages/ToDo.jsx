@@ -59,7 +59,8 @@ const ToDo = () => {
   };
 
   return (
-      <DndProvider backend={TouchBackend, HTML5Backend}>
+      <div>
+        <DndProvider className="block md:hidden" backend={TouchBackend}>
         <div className="flex justify-center items-center mx-auto p-16">
           <div className="flex justify-center items-center flex-wrap -mx-4 gap-6">
             {todos.map((todo, index) => (
@@ -86,6 +87,35 @@ const ToDo = () => {
           </div>
         </div>
     </DndProvider>
+
+        <DndProvider className="hidden md:block" backend={HTML5Backend}>
+        <div className="flex justify-center items-center mx-auto p-16">
+          <div className="flex justify-center items-center flex-wrap -mx-4 gap-6">
+            {todos.map((todo, index) => (
+              <TodoItem
+                key={todo.id}
+                id={todo.id}
+                content={todo.content}
+                index={index}
+                moveTodo={moveTodo}
+                editTodo={editTodo}
+                deleteTodo={deleteTodo}
+                onTouchStart={(e) => e.preventDefault()} // Prevent default touch behavior
+              />
+            ))}
+            <div className="border rounded-md bg-gray-200 shadow-md cursor-pointer mb-4">
+              <button
+                className="w-72 h-72 p-4 text-gray-600 hover:text-gray-800"
+                onClick={addTodo}
+                onTouchStart={addTodo} // Add onTouchStart for touch devices
+              >
+                + Add Todo
+              </button>
+            </div>
+          </div>
+        </div>
+    </DndProvider>
+      </div>
   );
 };
 
