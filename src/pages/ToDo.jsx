@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+import { TouchBackend } from "react-dnd-touch-backend";
+
 import TodoItem from "../components/TodoItem";
 
 const ToDo = () => {
@@ -58,31 +60,33 @@ const ToDo = () => {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <div className="flex justify-center items-center mx-auto p-16">
-        <div className="flex justify-center items-center flex-wrap -mx-4 gap-6">
-          {todos.map((todo, index) => (
-            <TodoItem
-              key={todo.id}
-              id={todo.id}
-              content={todo.content}
-              index={index}
-              moveTodo={moveTodo}
-              editTodo={editTodo}
-              deleteTodo={deleteTodo}
-              onTouchStart={(e) => e.preventDefault()} // Prevent default touch behavior
-            />
-          ))}
-          <div className="border rounded-md bg-gray-200 shadow-md cursor-pointer mb-4">
-            <button
-              className="w-72 h-72 p-4 text-gray-600 hover:text-gray-800"
-              onClick={addTodo}
-              onTouchStart={addTodo} // Add onTouchStart for touch devices
-            >
-              + Add Todo
-            </button>
+      <DndProvider backend={TouchBackend}>
+        <div className="flex justify-center items-center mx-auto p-16">
+          <div className="flex justify-center items-center flex-wrap -mx-4 gap-6">
+            {todos.map((todo, index) => (
+              <TodoItem
+                key={todo.id}
+                id={todo.id}
+                content={todo.content}
+                index={index}
+                moveTodo={moveTodo}
+                editTodo={editTodo}
+                deleteTodo={deleteTodo}
+                onTouchStart={(e) => e.preventDefault()} // Prevent default touch behavior
+              />
+            ))}
+            <div className="border rounded-md bg-gray-200 shadow-md cursor-pointer mb-4">
+              <button
+                className="w-72 h-72 p-4 text-gray-600 hover:text-gray-800"
+                onClick={addTodo}
+                onTouchStart={addTodo} // Add onTouchStart for touch devices
+              >
+                + Add Todo
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+      </DndProvider>
     </DndProvider>
   );
 };
