@@ -59,8 +59,7 @@ const ToDo = () => {
   };
 
   return (
-      <DndProvider backend={TouchBackend}>
-    <DndProvider backend={HTML5Backend}>
+      <DndProvider backend={TouchBackend, HTML5Backend}>
         <div className="flex justify-center items-center mx-auto p-16">
           <div className="flex justify-center items-center flex-wrap -mx-4 gap-6">
             {todos.map((todo, index) => (
@@ -87,7 +86,6 @@ const ToDo = () => {
           </div>
         </div>
     </DndProvider>
-      </DndProvider>
   );
 };
 
